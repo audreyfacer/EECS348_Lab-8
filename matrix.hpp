@@ -5,6 +5,10 @@
 #include <vector>
 
 class Matrix {
+private:
+private:
+    size_t size;  // Stores the matrix dimension (N x N)
+    std::vector<std::vector<int>> data; // 2D vector for matrix storage
 public:
     Matrix(std::size_t N);
     Matrix(std::vector<std::vector<int>> nums);
