@@ -77,28 +77,22 @@ int Matrix::sum_diagonal_minor() const {
 }
 
 void Matrix::swap_rows(std::size_t r1, std::size_t r2) {
-    Matrix result(size);
     if(r1 < size && r2 < size){
-        for(size_t i = 0; i < size; ++i){
-            result.data[r1][i] = data[r2][i];
-            result.data[r2][i] = data[r1][i];
-        }
+        std::swap(data[r1], data[r2]);
     }else{
         std::cerr << "Error: Invalid row indices.\n";
         return;
     }
-    result.print_matrix();
+    print_matrix();
 }
 void Matrix::swap_cols(std::size_t c1, std::size_t c2) {
-    Matrix result(size);
     if(c1 < size && c2 < size){
         for(size_t i = 0; i < size; ++i){
-            result.data[i][c1] = data[i][c2];
-            result.data[i][c2] = data[i][c1];
+            std::swap(data[i][c1], data[i][c2]);
         }
     }else{
         std::cerr << "Error: Invalid column indices.\n";
         return;
     }
-    result.print_matrix();
+    print_matrix();
 }
