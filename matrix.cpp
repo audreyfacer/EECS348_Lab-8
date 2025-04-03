@@ -26,11 +26,16 @@ void Matrix::print_matrix() const {
 }
 //retrieves a value at a certain index of the matrix
 int Matrix::get_value(std::size_t i, std::size_t j) const {
-    return data[i][j];
+    if(i >= size || j >= size){
+        throw std::out_of_range("Error: Matrix index out of bounds");
+        return;
+    }else{
+        return data[i][j];
+    }
 }
 void Matrix::set_value(std::size_t i, std::size_t j, int n) {
     if(i >= size || j >= size){
-        std::cerr << "Error: Invalid row or column indices.\n";
+        throw std::out_of_range("Error: Matrix index out of bounds");
         return;
     }else{
         data[i][j] = n;
@@ -80,7 +85,7 @@ void Matrix::swap_rows(std::size_t r1, std::size_t r2) {
     if(r1 < size && r2 < size){
         std::swap(data[r1], data[r2]);
     }else{
-        std::cerr << "Error: Invalid row indices.\n";
+        throw std::out_of_range("Error: Matrix index out of bounds");
         return;
     }
     print_matrix();
@@ -91,7 +96,7 @@ void Matrix::swap_cols(std::size_t c1, std::size_t c2) {
             std::swap(data[i][c1], data[i][c2]);
         }
     }else{
-        std::cerr << "Error: Invalid column indices.\n";
+        throw std::out_of_range("Error: Matrix index out of bounds");
         return;
     }
     print_matrix();
